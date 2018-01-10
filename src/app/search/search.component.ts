@@ -14,21 +14,16 @@ export class SearchComponent {
     private searchService: SearchService, 
     private router: Router,
     private activatedRoute: ActivatedRoute) {
-    this.results = [];
-
-    this.activatedRoute.params.subscribe((params: Params) => {
-      let query = params['q'];
-      debugger;
-      if(query) {
-        debugger;
-        this.executeSearch(query);
+      this.results = [];
+      let currentQuery = this.activatedRoute.snapshot.queryParams.q;
+      if (currentQuery) {
+        this.executeSearch(currentQuery);
       }
-    });
   }
 
-
   search(query) {
-    this.router.navigate([ '/search' ], { queryParams: { q: query }, replaceUrl: true},)
+    this.router.navigate([ '/search' ], { queryParams: { q: query }, queryParamsHandling: 'merge'},)
+    this.executeSearch(query);
   }
 
   executeSearch(query) {

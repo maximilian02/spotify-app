@@ -4,7 +4,7 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 const appRoutes: Routes = [
-    { path: 'search/:q', component: SearchComponent },
+    { path: 'search', component: SearchComponent },
     { path: 'favorites', component: FavoritesComponent },
     { path: '**', component: PageNotFoundComponent }
 ];
