@@ -9,6 +9,9 @@ import { FavoritesComponent } from './favorites/favorites.component';
 import { routing } from './app.routing';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
 
+import { ApiService } from './services/api.service'
+import { SearchService } from './services/search.service'
+
 @NgModule({
   imports: [
     BrowserModule,
@@ -20,7 +23,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
     FavoritesComponent,
     PageNotFoundComponent
   ],
-  providers: [],
+  providers: [ApiService, SearchService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
