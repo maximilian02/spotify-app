@@ -8,4 +8,9 @@ export class SearchService {
 
   constructor(private apiService: ApiService) {}
 
+  search() {
+      return this.apiService.auth()
+        .map(res => res.json());
+  }
+
 }
