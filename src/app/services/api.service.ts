@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http, Headers } from '@angular/http';
-// import { CookieService } from 'ngx-cookie';
+import 'rxjs/Rx';
 
 import { environment } from '../../environments/environment';
 
@@ -15,28 +15,20 @@ export class ApiService {
   constructor(private _http: Http /*, private cookieService: CookieService*/) {
     this.base = environment.spotifyApi;
     this.authUrl = environment.spotifyAuthUrl;
-    this.clientId = environment.spotifyClientId;
-    this.clientSecret = environment.spotifySecret;
     this.token = '';
   }
 
   createAuthorizationHeader(headers: Headers) {
-    headers.append('Authorization', 'application/json');
-  }
+    headers.append('Content-Type', 'application/json');
 
-  createAuthorizationToken(headers: Headers) {
-    const clientId = btoa(this.clientId);
-    // TODO: this is not good. Frontend shouldn't handle this kind of secret stuff.
-    // but for this example keep it
-    const clientSecret = btoa(this.clientSecret);
-    headers.append('Authorization', `Basic: ${clientId}:${clientSecret}`);
-    const a = `Basic: ${clientId}:${clientSecret}`;
-    debugger;
+    if(this.token) {
+      headers.append('Authorization', `Bearer ${this.token}`);
+    }
   }
 
   get(action) {
     let headers = new Headers();
-    // this.createAuthorizationHeader(headers);
+    this.createAuthorizationHeader(headers);
     return this._http.get(this.base + action, {
       headers: headers
     });
@@ -44,20 +36,29 @@ export class ApiService {
 
   post(action, data) {
     let headers = new Headers();
-    // this.createAuthorizationHeader(headers);
+    this.createAuthorizationHeader(headers);
     return this._http.post(this.base + action, data, {
       headers: headers
     });
   }
 
   auth() {
-    let headers = new Headers();
-    this.createAuthorizationToken(headers);
-
-    const url = this.authUrl + `client_id=${this.clientId}&response_type=code&redirect_uri=http://localhost:4200`;
-    const data = { grant_type: 'client_credentials' };
-    return this._http.post(url, data, {
+    const headers = new Headers();
+    this._http.post(this.authUrl + 'auth', {}, {
       headers: headers
-    });
+    })
+    .map(res => res.json())
+    .subscribe(
+      data => {
+        if(data.success) {
+          // TODO: The best way to store a token would be using cookies
+          // for now lets keep it like this, in the future this can be fixed
+          this.token = data.token;
+        }
+      },
+      err => {
+        console.log(err);
+      }
+    );
   }
 }

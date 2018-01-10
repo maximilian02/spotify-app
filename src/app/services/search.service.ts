@@ -6,11 +6,11 @@ import 'rxjs/Rx';
 @Injectable()
 export class SearchService {
 
-  constructor(private apiService: ApiService) {}
+    constructor(private apiService: ApiService) {
+    }
 
-  search() {
-      return this.apiService.auth()
-        .map(res => res.json());
-  }
-
+    search(query) {
+        return this.apiService.get(`search?type=track&q=${query}`)
+            .map(res => res.json());
+    }
 }

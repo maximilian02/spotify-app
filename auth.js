@@ -43,6 +43,8 @@ router.post('/auth', (req, res) => {
     request.post(authOptions, function(error, response, body) {
         if (!error && response.statusCode === 200) {
             res.json({ success: true, message: 'Enjoy your token!', token: body.access_token });
+        } else {
+            res.json({ success: false, message: 'Houston, we have a problem trying to get your token!' });
         }
     });
 });

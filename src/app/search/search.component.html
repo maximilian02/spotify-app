@@ -1,4 +1,25 @@
-<div class="input-group input-group-lg" ngIf="isLoggedIn">
-  <span class="input-group-addon">Find a song!</span>
-  <input type="text" class="form-control" placeholder="Search" aria-describedby="sizing-addon1">
+<div class="panel panel-default">
+  <div class="panel-heading">
+    <div class="input-group input-group-lg">
+      <span class="input-group-addon">Find a song!</span>
+      <input type="text" (keyup.enter)="search(query.value)" #query class="form-control" placeholder="Press enter to search!" aria-describedby="sizing-addon1">
+    </div>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Artist</th>
+        <th scope="col">Album</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of results">
+        <td>{{ item.title }}</td>
+        <td>{{ item.artist }}</td>
+        <td>{{ item.album }}</td>
+      </tr>
+    </tbody>
+  </table>
 </div>

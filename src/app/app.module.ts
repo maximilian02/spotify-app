@@ -17,6 +17,7 @@ import { SearchService } from './services/search.service'
   imports: [
     BrowserModule,
     HttpModule,
+    RouterModule,
     routing
   ],
   declarations: [
