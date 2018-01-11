@@ -4,8 +4,7 @@ import { FavoritesService } from '../services/favorites.service';
 
 @Component({
   selector: 'app-favorites',
-  templateUrl: './favorites.component.html',
-  styleUrls: ['./favorites.component.css']
+  templateUrl: './favorites.component.html'
 })
 export class FavoritesComponent {
   public results: Array<any>;
