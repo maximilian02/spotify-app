@@ -5,8 +5,7 @@ import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.css']
+  templateUrl: './search.component.html'
 })
 export class SearchComponent {
   public results: Array<any>;
@@ -24,12 +23,12 @@ export class SearchComponent {
       }
   }
 
-  search(query) {
+  search(query: string) {
     this.router.navigate([ '/search' ], { queryParams: { q: query }, queryParamsHandling: 'merge'},)
     this.executeSearch(query);
   }
 
-  executeSearch(query) {
+  executeSearch(query: string) {
     this.searchService.search(query)
       .subscribe(
         data => {
