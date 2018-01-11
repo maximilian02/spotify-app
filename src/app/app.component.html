@@ -4,7 +4,7 @@
   </h1>
   <div class="container">	
       <ul  class="nav nav-tabs">
-        <li [ngClass]="{'active': (content === '/search')}"><a [routerLink]="['/search']">Search</a></li>
+        <li [ngClass]="{'active': (content === '/search' || content === '/')}"><a [routerLink]="['/search']">Search</a></li>
         <li [ngClass]="{'active': (content === '/favorites')}"><a [routerLink]="['/favorites']">Favorites</a></li>
       </ul>
       <div class="tab-content clearfix">

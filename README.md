@@ -4,7 +4,7 @@ Initial frontend code was generated with [Angular CLI](https://github.com/angula
 
 ## Setting up Stuff
 
-- Make sure you have NodeJs installed along with NPM
+- Make sure you have NodeJs installed along with NPM. I'm using Node v8.8.1 and NPM v5.6.0
 - Make sure you have Angular Cli installed  `npm install -g @angular/cli`
 - Then install what we need to run the project `npm install`
 - Run the backend in one terminal: `npm run backend`
