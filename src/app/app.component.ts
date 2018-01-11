@@ -13,7 +13,6 @@ export class AppComponent {
   public content: string;
 
   constructor(private router: Router) {
-    this.content = 'search';
     this.router.events.filter(event => event instanceof NavigationEnd)
         .subscribe(event => {
             this.content = (event as NavigationEnd).url;
