@@ -40,7 +40,6 @@ export class FavoritesService {
         if(!this.isFavorite(item.id)) {
             this.favorites.push(item);
             this.storage.store('favorites', this.favorites);
-            console.log('', this.favorites);
         }
     }
 
