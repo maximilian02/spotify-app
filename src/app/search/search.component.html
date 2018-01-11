@@ -22,8 +22,11 @@
           <td>{{ item.artist }}</td>
           <td>{{ item.album }}</td>
           <td>
-            <button type="button" class="btn btn-primary" (click)="addToFavorites()">
+            <button type="button" class="btn btn-primary" *ngIf="!item.favorite" (click)="addFavorite(item)">
               <span class="glyphicon glyphicon glyphicon-plus" aria-hidden="true"></span>
+            </button>
+            <button type="button" class="btn btn-primary alert-danger" *ngIf="item.favorite" (click)="removeFavorite(item)">
+                <span class="glyphicon glyphicon glyphicon-trash" aria-hidden="true"></span>
             </button>
           </td>
         </tr>

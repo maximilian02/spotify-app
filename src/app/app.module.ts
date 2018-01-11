@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Ng2Webstorage } from 'ngx-webstorage';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -13,6 +14,7 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 
 import { ApiService } from './services/api.service'
 import { SearchService } from './services/search.service'
+import { FavoritesService } from './services/favorites.service';
 
 @NgModule({
   imports: [
@@ -20,6 +22,7 @@ import { SearchService } from './services/search.service'
     HttpModule,
     RouterModule,
     FormsModule,
+    Ng2Webstorage,
     routing
   ],
   declarations: [
@@ -28,7 +31,7 @@ import { SearchService } from './services/search.service'
     FavoritesComponent,
     PageNotFoundComponent
   ],
-  providers: [ApiService, SearchService],
+  providers: [ApiService, SearchService, FavoritesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
