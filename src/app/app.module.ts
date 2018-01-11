@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { RouterModule, Routes } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { SearchComponent } from './search/search.component';
@@ -18,6 +19,7 @@ import { SearchService } from './services/search.service'
     BrowserModule,
     HttpModule,
     RouterModule,
+    FormsModule,
     routing
   ],
   declarations: [

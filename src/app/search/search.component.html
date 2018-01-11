@@ -2,7 +2,7 @@
   <div class="panel-heading">
     <div class="input-group input-group-lg">
       <span class="input-group-addon">Find a song!</span>
-      <input type="text" (keyup.enter)="search(query.value)" #query class="form-control" placeholder="Press enter to search!" aria-describedby="sizing-addon1">
+      <input type="text" (keyup.enter)="search(query)" [(ngModel)]="query" class="form-control" placeholder="Press enter to search!" aria-describedby="sizing-addon1">
     </div>
   </div>
 

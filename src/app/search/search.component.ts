@@ -1,6 +1,7 @@
-import { Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { SearchService } from '../services/search.service';
-import { Router, ActivatedRoute, Params} from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
+import { ApiService } from '../services/api.service';
 
 @Component({
   selector: 'app-search',
@@ -9,14 +10,16 @@ import { Router, ActivatedRoute, Params} from '@angular/router';
 })
 export class SearchComponent {
   public results: Array<any>;
+  public query: string;
 
   constructor(
-    private searchService: SearchService, 
+    private searchService: SearchService,
     private router: Router,
     private activatedRoute: ActivatedRoute) {
       this.results = [];
       let currentQuery = this.activatedRoute.snapshot.queryParams.q;
       if (currentQuery) {
+        this.query = currentQuery;
         this.executeSearch(currentQuery);
       }
   }

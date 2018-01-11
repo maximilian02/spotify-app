@@ -6,12 +6,9 @@ import { ApiService } from './services/api.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent {
   public title: String = 'Spotify Web App';
 
   constructor(private apiService: ApiService) {}
 
-  ngOnInit() {
-    this.apiService.auth();
-  }
 }
